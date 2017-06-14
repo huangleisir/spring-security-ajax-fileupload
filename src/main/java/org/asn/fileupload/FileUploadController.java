@@ -8,6 +8,7 @@ import java.util.Iterator;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -56,6 +57,9 @@ public class FileUploadController {
 		System.out.println("file uploading..");
 		// 1. get the files from the request object
 		Iterator<String> itr = request.getFileNames();
+		if(!itr.hasNext()){
+			return "no file,please check and upload file";
+		}
 
 		MultipartFile mpf = request.getFile(itr.next());
 		System.out.println(mpf.getOriginalFilename() + " uploaded!");
@@ -72,7 +76,7 @@ public class FileUploadController {
 			e.printStackTrace();
 		}
 		
-		return "upload complete";
+		return "upload completed,http status="+HttpServletResponse.SC_OK;
 
 	}
 	

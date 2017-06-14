@@ -21,7 +21,9 @@
 			</form> 
 	</c:if>
 	<button value="Submit" onclick="uploadJqueryForm()" >Upload</button><i>Using JQuery Form Plugin</i><br/>
-<button value="Submit" onclick="uploadFormData()" >Upload</button><i>Using FormData Object</i>
+<!-- <button value="Submit" onclick="uploadFormData()" >
+Upload</button>
+<i>Using FormData Object</i> -->
  
 <div id="result"></div>
 </body>
