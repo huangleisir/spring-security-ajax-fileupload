@@ -75,4 +75,35 @@ public class FileUploadController {
 		return "upload complete";
 
 	}
+	
+	@RequestMapping(value = "/postMethod", method = RequestMethod.POST)
+	public @ResponseBody
+	String postMethod(MultipartHttpServletRequest request,
+			HttpServletResponse response) {
+		System.out.println("postMethod..");
+		
+		System.out.println("--------debugging------------");
+		// 1. get the files from the request object
+		/*Iterator<String> itr = request.getFileNames();
+
+		MultipartFile mpf = request.getFile(itr.next());
+		System.out.println(mpf.getOriginalFilename() + " uploaded!");*/
+
+	/*	try {
+			// just temporary save file info into ufile
+			int length = mpf.getBytes().length;
+			byte[] bytes = mpf.getBytes();
+			String type = mpf.getContentType();
+			String name = mpf.getOriginalFilename();
+			System.out.println("name: "+name);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		*/
+		return "postMethod..";
+
+	}
+	
+	
 }
