@@ -9,7 +9,7 @@
 	   <h2>Welcome : ${pageContext.request.userPrincipal.name} </h2>
            | <c:url var="logoutUrl" value="/j_spring_security_logout"/>
 		    <form class="form-inline" action="${logoutUrl}" method="post">
-		     <input name="${_csrf.parameterName}" value="${_csrf.token}"/>
+		     <input style="width:300px;" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 		      <input type="submit" value="Log out" />
 		      
 		    </form> 
