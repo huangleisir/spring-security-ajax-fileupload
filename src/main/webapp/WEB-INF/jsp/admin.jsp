@@ -9,15 +9,16 @@
 	   <h2>Welcome : ${pageContext.request.userPrincipal.name} </h2>
            | <c:url var="logoutUrl" value="/j_spring_security_logout"/>
 		    <form class="form-inline" action="${logoutUrl}" method="post">
+		     <input name="${_csrf.parameterName}" value="${_csrf.token}"/>
 		      <input type="submit" value="Log out" />
-		      <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+		      
 		    </form> 
 		    
 		    <i>Uploading File With Ajax</i><br/>		    
 			<form id="form2" method="post" action="${pageContext.request.contextPath}/upload-file" enctype="multipart/form-data">
 			  <!-- File input -->    
 			  <input name="file2" id="file2" type="file" /><br/>
-			  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+			  <input  name="${_csrf.parameterName}" value="${_csrf.token}"/>
 			</form> 
 	</c:if>
 	<button value="Submit" onclick="uploadJqueryForm()" >Upload</button><i>Using JQuery Form Plugin</i><br/>
