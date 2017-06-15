@@ -7,8 +7,10 @@ import java.io.IOException;
 import java.util.Iterator;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpRequest;
+import org.springframework.security.web.csrf.DefaultCsrfToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -55,6 +57,11 @@ public class FileUploadController {
 	String upload(MultipartHttpServletRequest request,
 			HttpServletResponse response) {
 		System.out.println("file uploading..");
+		HttpSession session = request.getSession() ;//watch it with debug mode
+    	DefaultCsrfToken defaultCsrfToken = (DefaultCsrfToken)session.getAttribute("org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository.CSRF_TOKEN");
+        String csrfToken = defaultCsrfToken.getToken();
+        System.out.println("/get called: successful  ,csrfToken: "+csrfToken);
+       
 		// 1. get the files from the request object
 		Iterator<String> itr = request.getFileNames();
 		if(!itr.hasNext()){
@@ -76,7 +83,7 @@ public class FileUploadController {
 			e.printStackTrace();
 		}
 		
-		return "upload completed,http status="+HttpServletResponse.SC_OK;
+		 return "uplaod file succeed ,csrfToken: "+csrfToken;
 
 	}
 	
